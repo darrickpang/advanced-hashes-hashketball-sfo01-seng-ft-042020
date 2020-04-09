@@ -124,19 +124,30 @@ def game_hash
         ]
       }
     }
-  return hash
+  #return hash
 end 
 
 
 def num_points_scored(name)
   data = game_hash
   data.each do |team, players|
+    binding.pry
     players[:players].each do |info|
       if info[:player_name] == name
         return info[:points]
       end
     end
   end
+end
+
+
+def team_colors(team_name)
+  data = game_hash
+  data.each do |team, teams|
+    if teams[:team_name] == team_name
+      return teams[:colors]
+    end
+  end 
 end
 
 def shoe_size(name)
@@ -146,15 +157,6 @@ def shoe_size(name)
       if info[:player_name] == name
         return info[:shoe]
       end
-    end
-  end
-end
-
-def team_colors(team_name)
-  data = game_hash
-  data.each do |team, teams|
-    if teams[:team_name] == team_name
-        return teams[:colors]
     end
   end
 end
@@ -178,7 +180,15 @@ def player_numbers(team_name)
       end 
     end
   end
-  return arr
+end 
+
+def team_colors(team_name)
+  data = game_hash
+  data.each do |team, teams|
+    if teams[:team_name] == team_name
+        return teams[:colors]
+    end
+  end
 end
 
 def player_stats(name)
